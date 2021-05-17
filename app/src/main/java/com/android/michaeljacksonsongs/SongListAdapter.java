@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -67,6 +70,8 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.SongVi
             formattedDate = "N/A Date";
         }
         viewHolder.mSongReleaseDate.setText(formattedDate);
+
+        Picasso.get().load(songItem.artworkUrl60).into(viewHolder.mSongImage);
     }
 
     @Override
@@ -81,6 +86,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.SongVi
         TextView mArtistName;
         TextView mCollection;
 
+        ImageView mSongImage;
         TextView mDiskNumber;
         TextView mTrackNumber;
         TextView mSongLength;
@@ -100,6 +106,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.SongVi
             mSongReleaseDate = itemView.findViewById(R.id.tv_song_release_date);
             mSongCountry = itemView.findViewById(R.id.tv_song_country);
             mSongPrice = itemView.findViewById(R.id.tv_song_price);
+            mSongImage = itemView.findViewById(R.id.iv_track_icon);
         }
 
 
